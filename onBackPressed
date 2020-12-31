@@ -1,0 +1,16 @@
+    @Override
+    public void onBackPressed() {
+        long time = System.currentTimeMillis();
+
+        if (startTouchMillis == 0 || (time - startTouchMillis > 2000)) {
+            startTouchMillis = time;
+            touchCount = 1;
+            Toast.makeText(context, getResources().getString(R.string.alert_exit_confirmation), Toast.LENGTH_SHORT).show();
+        } else {
+            touchCount++;
+        }
+
+        if (touchCount == 2) {
+            finish();
+        }
+    }
